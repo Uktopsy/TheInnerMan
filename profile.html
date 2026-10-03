@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Profile</title>
+</head>
+<body style="margin:0; background:#111; display:flex; flex-direction:column; align-items:center; padding:20px; font-family:sans-serif;">
+
+<canvas id="c" width="800" height="800" style="max-width:100%; border-radius:50%; border:1px solid #333;"></canvas>
+
+<a id="dl" download="TheInnerMan-profile.png"
+   style="margin-top:20px; display:inline-block; background:#c9b98a; color:#0d0d0d; padding:14px 28px; text-decoration:none; border-radius:6px; font-weight:bold;">
+  Tap here to download profile picture
+</a>
+
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+
+// Background
+const grad = ctx.createRadialGradient(400, 400, 50, 400, 400, 500);
+grad.addColorStop(0, '#1a1208');
+grad.addColorStop(1, '#000000');
+ctx.fillStyle = grad;
+ctx.fillRect(0, 0, 800, 800);
+
+// Inner gold ring
+ctx.strokeStyle = '#c9b98a';
+ctx.lineWidth = 6;
+ctx.beginPath();
+ctx.arc(400, 400, 350, 0, Math.PI * 2);
+ctx.stroke();
+
+// Letters IM
+ctx.fillStyle = '#c9b98a';
+ctx.font = 'bold 380px Georgia, serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('IM', 400, 420);
+
+// Wire up download
+document.getElementById('dl').href = c.toDataURL('image/png');
+</script>
+
+</body>
+</html>
